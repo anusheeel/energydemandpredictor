@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Bill Analysis | Green Energy Solutions</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Add Clash Display and JetBrains Mono fonts -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="nav-menu" aria-label="Main navigation">
+                <div class="logo-container">
+                    <a href="/" aria-label="Home">
+                        <img src="/static/images/logo.svg" alt="Green Energy Solutions" width="160" height="40">
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+
+                <div class="nav-links">
+                    <a href="/upload/" class="nav-link active">Upload Bills</a>
+                    <a href="/#about" class="nav-link">About Us</a>
+                    <a href="/#mission" class="nav-link">Our Mission</a>
+                    <a href="/#goals" class="nav-link">Our Goals</a>
+                    <a href="/#contact" class="nav-link">Contact</a>
+                </div>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="form-container animate-slide-up" style="animation-delay: 0.2s">
+                <form action="/upload/" method="POST" enctype="multipart/form-data" id="uploadForm">
+                    <div class="upload-zone" id="dropZone">
+                        <label class="custom-file-label">
+                            <svg class="file-icon" viewBox="0 0 24 24"><!-- Add upload icon SVG --></svg>
+                            <span class="upload-text">Drop files here or click to upload</span>
+                            <span class="upload-subtext">Supports CSV, XLSX, and PDF files</span>
+                            <input type="file" id="file" name="files" multiple required class="visually-hidden">
+                        </label>
+                    </div>
+
+                    <div class="file-list" id="fileList">
+                        <!-- File items will be inserted here -->
+                    </div>
+
+                    <div class="upload-progress" hidden>
+                        <div class="progress-bar" style="transform: scaleX(0)"></div>
+                    </div>
+
+                    <button type="submit" class="upload-btn">
+                        <svg class="upload-icon" viewBox="0 0 24 24"><!-- Add icon SVG --></svg>
+                        <span>Start Analysis</span>
+                    </button>
+                </form>
+            </div>
+        </main>
+
+        <footer class="landing-footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                        <li><a href="/sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="mailto:contact@greenenergy.com">contact@greenenergy.com</a></li>
+                        <li><a href="tel:+18005551234">+1 (800) 555-1234</a></li>
+                        <li>123 Greenway Drive, EcoCity, EC 56789</li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/company/greenenergy">LinkedIn</a>
+                        <a href="https://twitter.com/greenenergy">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2024 Green Energy Solutions. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add drag and drop functionality
+        const dropZone = document.getElementById('dropZone');
+        const fileList = document.getElementById('fileList');
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('upload-zone-active');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('upload-zone-active');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('upload-zone-active');
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        function handleFiles(files) {
+            // Add file handling logic here
+        }
+    </script>
+</body>
+</html>
